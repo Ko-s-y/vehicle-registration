@@ -20,4 +20,19 @@ class ProfileUserView(generics.RetrieveUpdateAPIView):
 
   def partial_update(self, request, *args, **kwargs):
     response = {'message': 'PATCH method is not allowed'}
-    return Response(response, status=status.HTP_405_METHOD_NOT_ALLOWED))
+    return Response(response, status=status.HTP_405_METHOD_NOT_ALLOWED)
+
+class SegmentViewSet(viewsets.ModelViewSet):
+  queryset = Segment.objects.all()
+  serializer_class = SegmentSerializer
+
+class BrandViewSet(viewsets.ModelViewSet):
+  queryset = Brand.objects.all()
+  serializer_class = BrandSerializer
+
+class VehicleViewSet(viewsets.ModelViewSet):
+  queryset = Vehicle.objects.all()
+  serializer_class = VehicleSerializer
+
+  def perform_create(self, serializer):
+    serializer.save(user=self.request.user)
