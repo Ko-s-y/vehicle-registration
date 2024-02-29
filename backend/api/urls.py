@@ -12,7 +12,7 @@ app_name = 'api'
 
 urlpatterns = [
   path('create/', views.CreateUserView.as_view(), name='create'),
-  path('profile', views.ProfileUserView.as_view(), name='profile'),
+  path('profile/', views.ProfileUserView.as_view(), name='profile'),
   path('auth/', obtain_auth_token, name='auth'),
   path('', include(router.urls))
 ]
