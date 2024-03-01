@@ -22,3 +22,11 @@ class AuthorizedUserApiTests(TestCase):
         'username': self.user.username,
       }
     )
+
+  def test_1_2_should_not_allowed_byPUT(self):
+    payload = {
+      'username': 'dummy',
+      'password': 'dummy_pw'
+    }
+    res = self.client.put(PROFILE_URL, payload)
+    self.assertEqual(res.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
