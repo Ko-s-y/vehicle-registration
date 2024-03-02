@@ -16,11 +16,11 @@ class ProfileUserView(generics.RetrieveUpdateAPIView):
 
   def update(self, request, *args, **kwargs):
     response = {'message': 'PUT method is not allowed'}
-    return Response(response, status=status.HTP_405_METHOD_NOT_ALLOWED)
+    return Response(response, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
   def partial_update(self, request, *args, **kwargs):
     response = {'message': 'PATCH method is not allowed'}
-    return Response(response, status=status.HTP_405_METHOD_NOT_ALLOWED)
+    return Response(response, status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 class SegmentViewSet(viewsets.ModelViewSet):
   queryset = Segment.objects.all()
